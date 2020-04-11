@@ -1,0 +1,23 @@
+version: '3.4'
+services:
+    rtitstelegrambot:
+        image: rtitstelegrambot
+        container_name: rtitstelegrambot
+        build:
+            context: .
+            dockerfile: Dockerfile
+            target: debug
+        ports:
+            - "0.0.0.0:8443:8443"
+            - "0.0.0.0:80:80"
+            - "0.0.0.0:443:443"
+            - "0.0.0.0:8080:8080"
+        networks:
+            - rtitstelegrambot
+        environment:
+            - DOCKER_HOST="tcp://62.122.102.69:2376"
+            - DOCKER_TLS_CERTDIR="C:/Users/Xerces/.docker/itoll"
+            - DOCKER_TLS_VERIFY=1​
+networks:
+    rtitstelegrambot:
+        external: true
